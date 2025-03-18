@@ -19,6 +19,10 @@ import time as _time
 import backtrader as bt
 from pyqtgraph import mkColor, mkBrush
 
+# 买卖点标识颜色
+fplt.arrow_bull_color = "#1100ff"
+fplt.arrow_bear_color = "#ff00e1"
+
 def chinese_price_colorfilter(item, datasrc, df):
     opencol = df.columns[1]
     closecol = df.columns[2]
