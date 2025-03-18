@@ -396,6 +396,11 @@ class UserInterface:
         
         self.strategyTesterUI.startingCashLE.textChanged.connect( self.controller.cashChanged )
 
+        self.strategyTesterUI.code.setText(self.controller.code)
+
+        self.strategyTesterUI.startDate.setText(self.controller.startDate)
+        self.strategyTesterUI.endDate.setText(self.controller.endDate)
+
         pass
 
     #########

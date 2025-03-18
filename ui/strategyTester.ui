@@ -42,8 +42,57 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Code</string>
+      </property>
+     </widget>
+    </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="code">
+     <property name="inputMask">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Start Date</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="startDate">
+     <property name="inputMask">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>End Date</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="endDate">
+     <property name="inputMask">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="loadDataBtn">
+       <property name="text">
+        <string>Load data</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="importDataBtn">
        <property name="text">
@@ -53,7 +102,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
+   <item row="6" column="0">
     <widget class="QLabel" name="label_6">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -73,7 +122,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="strategyTypeAITensorFlowBtn">
@@ -156,7 +205,7 @@ Torch</string>
      </item>
     </layout>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="8" column="0" colspan="2">
     <widget class="QStackedWidget" name="strategyTypeDetailsSW">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -203,7 +252,7 @@ Torch</string>
      </widget>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="9" column="0">
     <widget class="QLabel" name="label_3">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -223,7 +272,7 @@ Torch</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="10" column="0" colspan="2">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -288,7 +337,7 @@ Torch</string>
      </item>
     </layout>
    </item>
-   <item row="8" column="1">
+   <item row="11" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -301,7 +350,7 @@ Torch</string>
      </property>
     </spacer>
    </item>
-   <item row="9" column="0" colspan="2">
+   <item row="12" column="0" colspan="2">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QPushButton" name="runBacktestBtn">

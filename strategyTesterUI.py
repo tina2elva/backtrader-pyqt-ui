@@ -18,8 +18,11 @@ class StrategyTesterUI(QtWidgets.QWidget):
         uic.loadUi( self.current_dir_path + "/ui/strategyTester.ui", self)
 
         # Data
+        self.loadDataBtn = self.findChild(QtWidgets.QPushButton, "loadDataBtn")
+        self.loadDataBtn.clicked.connect(self.loadData)
+
         self.importDataBtn = self.findChild(QtWidgets.QPushButton, "importDataBtn")
-        self.importDataBtn.clicked.connect( self.loadData )
+        self.importDataBtn.clicked.connect( self.importData )
         
         # Strategy type PushButtons
         self.strategyTypeAITensorFlowBtn = self.findChild(QtWidgets.QPushButton, "strategyTypeAITensorFlowBtn")
@@ -73,6 +76,9 @@ class StrategyTesterUI(QtWidgets.QWidget):
         pass
 
     def loadData(self):
+        self.controller.loadData()
+
+    def importData(self):
         self.loadDataFileUI.show()
         pass
  

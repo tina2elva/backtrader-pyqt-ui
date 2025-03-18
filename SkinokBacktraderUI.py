@@ -42,6 +42,8 @@ from userConfig import UserConfig
 
 from PyQt6 import QtCore
 
+from adapters.data.dataAdapter import get_data
+
 class SkinokBacktraderUI:
 
     def __init__(self):
@@ -49,6 +51,10 @@ class SkinokBacktraderUI:
         # init variables
         self.data = None
         self.startingcash = 10000.0
+
+        self.code = '000001'
+        self.startDate = '20190101'
+        self.endDate = '20210101'
 
         # Init attributes
         self.strategyParameters = {}
@@ -166,6 +172,86 @@ class SkinokBacktraderUI:
 
         pass
 
+    def loadData(self):
+        data = get_data(code=self.code,
+                        start_date=self.startDate,
+                        end_date=self.endDate)
+
+        self._draw_data(data)
+        if not data.empty:
+            data = self._datatransform(data, self.code)
+            self.cerebro.adddata(data, name=self.code)
+            self.data = data
+
+
+    # 数据转换
+    def _datatransform(self, stock_data, code):
+        # 生成datafeed
+        data = bt.feeds.PandasData(
+            dataname=stock_data,
+            name=code,
+            fromdate=stock_data.datetime[0],
+            todate=stock_data.datetime[len(stock_data) - 1],
+            datetime='datetime',
+            open='open',
+            high='high',
+            low='low',
+            close='close',
+            volume='volume',
+            openinterest=-1
+        )
+        return data
+
+    def findTimeFrame(self, df):
+
+        if len(df.index) > 2:
+            dtDiff = df.index[1] - df.index[0]
+
+            seconds = dtDiff.value / 1000/ 1000 / 1000
+
+            if seconds == 60:
+                return "M1"
+            elif seconds == 300:
+                return "M5"
+            elif seconds == 900:
+                return "M15"
+            elif seconds == 1800:
+                return "M30"
+            elif seconds == 3600:
+                return "H1"
+            elif seconds == 14400:
+                return "H4"
+            elif seconds == 86400:
+                return "D"
+            elif seconds == 604800:
+                return "W"
+
+
+    def _draw_data(self, data):
+        try:
+            # Datetime first column : 2012-12-28 17:45:00
+            # self.dataframe['TimeInt'] = pd.to_datetime(self.dataframe.index).astype('int64') # use finplot's internal representation, which is ns
+            # Find timeframe
+            timeframe = self.findTimeFrame(data)
+
+            # Create the chart window for the good timeframe (if it does not already exists?)
+            self.interface.createChartDock(timeframe)
+
+            # Draw charts based on input data
+            self.interface.drawChart(data, timeframe)
+
+        # Enable run button
+            self.interface.strategyTesterUI.runBacktestPB.setEnabled(True)
+
+            return True
+
+        except AttributeError as e:
+            print("AttributeError error:" + str(e))
+        except KeyError as e:
+            print("KeyError error:" + str(e))
+        except:
+            print("Unexpected error:" + str(sys.exc_info()[0]))
+            return False
 
     def importData(self):
 
