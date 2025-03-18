@@ -145,9 +145,9 @@ class FinplotWindow():
 
                             color =  "#555555"
                             if order.executed.pnl > 0:
-                                color =  "#30FF30"
-                            elif order.executed.pnl < 0:
                                 color = "#FF3030"
+                            elif order.executed.pnl < 0:
+                                color = "#30FF30"
 
                             fplt.add_line(posOpen, posClose, color, 2, style="--", ax = self.ax0 )
 
@@ -191,9 +191,9 @@ class FinplotWindow():
 
                             color =  "#555555"
                             if order.executed.pnl > 0:
-                                color =  "#30FF30"
-                            elif order.executed.pnl < 0:
                                 color = "#FF3030"
+                            elif order.executed.pnl < 0:
+                                color = "#30FF30"
 
                             fplt.add_line(posOpen, posClose, color, 2, ax=self.ax0, style="--" )
                             
