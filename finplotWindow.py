@@ -246,14 +246,14 @@ class FinplotWindow():
         if activated:
             fplt.foreground = '#777'
             fplt.background = '#19232D'
-            fplt.candle_bull_color = fplt.candle_bull_body_color = '#0b0'
-            fplt.candle_bear_color = '#a23'
+            fplt.candle_bull_color = fplt.candle_bull_body_color = '#a23'
+            fplt.candle_bear_color = fplt.candle_bear_body_color = '#0b0'
             volume_transparency = '6'
         else:
             fplt.foreground = '#444'
-            fplt.background = fplt.candle_bull_body_color = '#fff'
-            fplt.candle_bull_color = '#380'
-            fplt.candle_bear_color = '#c50'
+            fplt.background = '#fff'
+            fplt.candle_bull_color = fplt.candle_bull_body_color = '#c50'
+            fplt.candle_bear_color = fplt.candle_bear_body_color = '#380'
             volume_transparency = 'c'
 
         fplt.volume_bull_color = fplt.volume_bull_body_color = fplt.candle_bull_color + volume_transparency
